@@ -1,0 +1,31 @@
+.online_photo, .offline_photo {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    box-shadow: rgba(61, 163, 93, 0.56) 0px 22px 70px 4px;
+}
+
+.offline_photo {
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.online_user_wrapper, .offline_user_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
+.online_title, .offline_title {
+    margin-top: 5px;
+    font-size: 1.1rem;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 600;
+    color: rgba(0, 0, 0, .8);
+    width: 150px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

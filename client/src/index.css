@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Lexend';
+  src: url(../public/fonts/Lexend/Lexend-VariableFont_wght.ttf);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #bec5ad;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+div {
+  font-family: Lexend;
+}

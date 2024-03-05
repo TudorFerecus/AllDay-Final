@@ -1,0 +1,26 @@
+.break-line {
+      height: 1px;
+      border: 0;
+      background: black;
+      background: -webkit-gradient(linear,
+              0 0,
+              100% 0,
+              from(#bec5ad),
+              to(#bec5ad),
+              color-stop(50%, rgba(255, 255, 255, 0.5)));
+}
+  
+.categories-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100dvw;
+}
+
+@media only screen and (max-width: 600px) {
+      .nav a {
+            font-size: .8rem;
+      }
+      .log {
+            font-size: .8rem;
+        }   
+}

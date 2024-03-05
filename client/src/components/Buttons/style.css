@@ -1,0 +1,51 @@
+.button1 {
+    width: 10dvw;
+    height: 2dvw;
+    min-width: 100px;
+    min-height: 25px;
+    border: solid 2px;
+    border-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    background: none;
+    font-family: Lexend;
+    transition: all .15s ease-in-out;
+    color: black
+}
+
+.button1:hover {
+    color: white;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.button2-icon {
+    margin-left: .5dvw;
+}
+
+.button2 {
+    font-family: Lexend;
+    font-weight: 300;
+    font-size: .9rem;
+    margin-right: 8dvw;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+    height: 2.4rem;
+    min-height: fit-content;
+    background: none;
+    border: solid 1px #3da35d;
+    color: #3da35d;
+    transition: all ease-in-out 0.15s;
+}
+
+.button2:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #3da35d;
+}
+
+@media screen and (max-width:600px)
+{
+    .button2 {
+        height: 100px;
+    }
+}

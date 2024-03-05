@@ -1,0 +1,12 @@
+.online_wrapper, .offline_wrapper {
+    max-width: 90%;
+    padding-left: min(2%, 100px);
+    padding-right: min(2%, 100px);
+    margin-top: 20px;
+    display: flex;
+    gap: min(2%, 100px);
+}
+
+.offline_wrapper {
+    margin-top: 50px;
+}

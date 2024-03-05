@@ -1,0 +1,30 @@
+.input-text {
+    color: rgba(0, 0, 0, 0.8);
+    margin-left: 1rem;
+    margin-bottom: 1dvh;
+}
+
+.input-form {
+    border: none;
+    background-color: rgba(60, 60, 60, 0.1);
+    height: 5dvh;
+    width: 20dvw;
+    min-height: 20px;
+    min-width: 250px;
+    padding-left: 10px;
+    font-size: 1rem;
+}
+
+.input-form::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: Lexend;
+    font-weight: 300;
+}
+
+
+@media screen and (max-width: 400px) {
+    .input-form::placeholder {
+        font-weight: 200;
+        font-size: .8rem;
+    }
+  }

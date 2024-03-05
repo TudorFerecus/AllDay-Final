@@ -1,0 +1,50 @@
+.card {
+    background-color: #e2e6dd;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    flex:1;
+    padding: 2dvh 1dvw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    position: absolute;
+    right: 2%;
+    font-size: 1.3rem;
+}
+
+.card_title {
+    font-weight: 500;
+}
+
+.main_wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.bar_chart, .line_chart, .calendar_chart {
+    width: 100%;
+    height: 90%;
+}
+
+.hour_chart {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2dvh;
+    height: 60%;
+    width: 100%;
+}
+
+.calendar_chart {
+    margin-top: 2%;
+}
+
+.hour_wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
