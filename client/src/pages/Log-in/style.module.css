@@ -29,8 +29,8 @@ body, html {
 
 .wrapper {
     height: fit-content;
-    width: 90%;
-    max-width: 400px;
+    width: 23dvw;
+    min-width: 400px;
     background-color: rgba(185, 185, 185, 0.3);
     border-radius: 10%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

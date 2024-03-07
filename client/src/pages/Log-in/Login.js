@@ -39,6 +39,13 @@ function Login()
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        let inputs = document.querySelectorAll('.input-form');
+
+        for(let i = 0; i < inputs.length; i++)
+            inputs[i].value = ''
+
+
         if(formData.mail && formData.password)
         {
             LoginAPI(formData, onResponse, onError)
@@ -55,7 +62,10 @@ function Login()
             <Navbar />
             <div className={styleCSS.main_section}>
                 <div className={styleCSS.wrapper}>
-                    <Title titleText="Log-in" marginBottomTitle="40px"/>
+                    <div style={{marginTop: "2dvh"}}>
+                        <Title titleText="Log-in" marginBottomTitle="40px"/>
+                    </div>
+
                     <form className={styleCSS.login_form} onSubmit={onSubmit}>
                         <div className={styleCSS.inputs}>
                             <Input inputName="Email" 
@@ -63,7 +73,9 @@ function Login()
                             <Input inputName="Password" inputType="password"
                                 inputPlaceholder="Enter your password here" onChange={(e)=> setFormData({...formData, password:e.target.value})}/>
                         </div>
-                        <Button1 buttonText="Log-in" />
+                        <div style={{marginBottom: "2dvh"}}>
+                            <Button1 buttonText="Log-in" />
+                        </div>
                     </form>
                 </div>
             </div>

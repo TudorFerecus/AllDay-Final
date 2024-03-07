@@ -53,7 +53,7 @@ function Analytics() {
 
         setDailyProductivity(dailyProductivityResponse)
 
-        setuserPercentage(percentage(usersResponse.length, users.length))
+        setuserPercentage(percentage(usersResponse.length, users.length).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0])
 
         setCalendarData(calendarDataResponse)
     

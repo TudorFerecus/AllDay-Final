@@ -12,6 +12,7 @@ import styleCSS from './style.module.css'
 
 function Signup()
 {
+
     const [formData, setFormData] = 
         useState({name:'', mail:'', password:'', confirmPassword:''})
     const navigate = useNavigate()
@@ -36,6 +37,12 @@ function Signup()
     function onSubmit(e)
     {
         e.preventDefault();
+
+        let inputs = document.querySelectorAll('.input-form');
+
+        for(let i = 0; i < inputs.length; i++)
+            inputs[i].value = ''
+
         if(formData.name && formData.mail && formData.password && formData.confirmPassword)
         {
             if(formData.password === formData.confirmPassword)
@@ -56,19 +63,23 @@ function Signup()
             <Navbar />
             <div className={styleCSS.main_section}>
                 <div className={styleCSS.wrapper}>
-                    <Title titleText="Sign-up" marginBottomTitle="40px"/>
+                    <div style={{marginTop: "2dvh"}}>
+                        <Title titleText="Sign-up" marginBottomTitle="40px"/>
+                    </div>
                     <form className={styleCSS.signup_form} onSubmit={onSubmit}>
                         <div className={styleCSS.inputs}>
                             <Input inputName="Name" inputPlaceholder="Enter your name here"
                                 onChange={(e)=> setFormData({...formData, name:e.target.value})} />
-                            <Input inputName="Email" inputPlaceholder="Enter your email here" 
+                            <Input  inputName="Email" inputPlaceholder="Enter your email here" 
                                 onChange={(e)=> setFormData({...formData, mail:e.target.value})}/>
-                            <Input inputName="Password" inputPlaceholder="Enter your email here" inputType="password"
+                            <Input  inputName="Password" inputPlaceholder="Enter your email here" inputType="password"
                                 onChange={(e)=> setFormData({...formData, password:e.target.value})}/>
-                            <Input inputName="Repeat Password" inputPlaceholder="Enter your password here" inputType="password"
+                            <Input  inputName="Repeat Password" inputPlaceholder="Enter your password here" inputType="password"
                                 onChange={(e)=> setFormData({...formData, confirmPassword:e.target.value})}/>
                         </div>
-                        <Button1 buttonText="Join us!" />
+                        <div style={{marginTop: "2dvh"}}>
+                            <Button1 buttonText="Join us!" />
+                        </div>
                     </form>
                 </div>
             </div>
