@@ -27,3 +27,15 @@
     margin-bottom: max(3dvw, 30px);
     margin-left: 3dvw;
 }
+
+@media only screen and (max-width:600px)
+{
+    .stats_title {
+        font-size: 1.2rem;
+    }
+
+    .stats_grid {
+        grid-template-columns: max(8dvw, 120px) max(12.5dvw, 130px)
+    }
+
+}

@@ -16,11 +16,12 @@
       width: 100dvw;
 }
 
+
 @media only screen and (max-width: 600px) {
       .nav a {
-            font-size: .8rem;
+            font-size: .6rem;
       }
       .log {
-            font-size: .8rem;
-        }   
+            font-size: .6rem;
+      } 
 }

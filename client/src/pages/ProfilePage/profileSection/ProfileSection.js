@@ -13,6 +13,7 @@ import Button1 from '../../../components/Buttons/Button1';
 import { GetUser, PostPhoto, UpdateUser } from '../../../features/API/API';
 import { alertError } from '../../../features/Alerts/alerts';
 
+
 function ProfileSection()
 {
     const signOut = useSignOut()

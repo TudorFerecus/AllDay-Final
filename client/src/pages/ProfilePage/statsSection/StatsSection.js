@@ -25,12 +25,25 @@ function StatsSection()
             totalTimeFormatted = res.totalTime + ' Minutes'
 
         else if(res.totalTime < 1440)
-            totalTimeFormatted = Math.floor(parseInt(res.totalTime) / 60) + ' Hours ' 
-            + (parseInt(res.totalTime) % 60) + ' Minutes'
+        {
+            let hoursText = ' Hours '
+            let minutesText = ' Minutes '
+            if(Math.floor(parseInt(res.totalTime) / 60) === 1) hoursText = ' Hour '
+            if(parseInt(res.totalTime) % 60 === 1) minutesText = ' Minute'
+            totalTimeFormatted = Math.floor(parseInt(res.totalTime) / 60) + hoursText
+            + (parseInt(res.totalTime) % 60) + minutesText
+        }
 
         else
-            totalTimeFormatted = Math.floor(parseInt(res.totalTime) / 1440) + ' Days ' 
-            + Math.floor((parseInt(res.totalTime) % 1440) / 60) + ' Hours ' 
+        {
+            let hoursText = ' Hours'
+            let daysText = ' Days '
+            if(Math.floor(parseInt(res.totalTime) / 60) === 1) hoursText = ' Hour'
+            if(Math.floor(parseInt(res.totalTime) / 1440) === 1) hoursText = ' Day '
+            
+            totalTimeFormatted = Math.floor(parseInt(res.totalTime) / 1440) + daysText 
+            + Math.floor((parseInt(res.totalTime) % 1440) / 60) + hoursText
+        }
 
         setLastOnline(res.lastOnline)
         setTotalTimeSpent(totalTimeFormatted)

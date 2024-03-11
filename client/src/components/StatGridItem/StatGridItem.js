@@ -1,14 +1,17 @@
 import styleCSS from './style.module.css'
 
+import useWindowSize from '../../hooks/useResizeWindow'
+
 function StatGridItem({text, highlightText, color, bold})
 {
+    let [windowSize, setWindowSize] = useWindowSize()
     let fontWheight = '400'
-    let fontSize = '1.18rem'
+    let fontSize = windowSize > 600? '1.18rem' : '.8rem'
 
     if(bold)
     {
         fontWheight = '500'
-        fontSize = '1.35rem'
+        fontSize = windowSize > 600? '1.35rem' : '.92rem'
     }
 
     return (
@@ -16,7 +19,7 @@ function StatGridItem({text, highlightText, color, bold})
             {text}
             {
                 highlightText?
-                <span className={styleCSS.stat_grid_item_hightlight} style={{color:`${color}`}}>
+                <span className={styleCSS.stat_grid_item_hightlight} style={{color:`${color}`, fontSize: `${fontSize}`}}>
                     {highlightText}
                 </span> :
                 <></>

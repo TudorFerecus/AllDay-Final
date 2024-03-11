@@ -5,6 +5,7 @@
     box-shadow: rgba(61, 163, 93, 0.56) 0px 10px 40px 0px;
     margin-top: 15px;
     margin-bottom: 15px;
+    object-fit:cover;
 }
 
 .offline_photo {
