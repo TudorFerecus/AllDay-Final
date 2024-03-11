@@ -2,6 +2,10 @@ import scapy.all as scapy
 from time import sleep
 import requests
 from datetime import datetime
+from dotenv import load_dotenv
+from pathlib import Path
+import os
+
 
 # realizeaza un request de tip get la baza de date hostata online 
 def getIPs():
@@ -56,9 +60,13 @@ def display_result(results):
     return clientsFound
 
 
+dotenv_path = Path('../.env')
+load_dotenv(dotenv_path=dotenv_path)
+LOCAL_IP = os.getenv('LOCAL_IP')
+
 urlUsers = 'http://localhost:10000/api/v1/users/getAllUsers'
 urlConnection = 'http://localhost:10000/api/v1/connections/postConnection'
-target_ip = "192.168.0.0/24" # adresa IP a retelei, cu tot cu masca sa de retea
+target_ip = f"{LOCAL_IP}/24" # adresa IP a retelei, cu tot cu masca sa de retea
 ips = [] # toate adresele IP ale userilor
 
 nrOfTries = 100 # cu cat mai mare cu atat mai exact algoritmul, dar ii scade viteza
@@ -70,6 +78,8 @@ found_ips = []
 
 getIPs()
 print(ips)
+
+print(target_ip)
 
 try:
     while True:

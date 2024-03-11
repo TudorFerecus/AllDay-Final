@@ -1,0 +1,76 @@
+.profile_section {
+    width: 30%;
+    height: 60%;
+    min-height: 400px;
+    min-width: 300px;
+    background-color: rgba(185, 185, 185, 0.3);
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 49px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo_wrapper {
+    position: relative;
+}
+
+.profile_photo {
+    margin-top: 20px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+
+
+
+.profile_title {
+    margin-top: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.username, .email, .team {
+    margin-top: 20px;
+    font-size: 1.15rem;
+}
+
+.username {
+    margin-top: 35px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.add_photo_wrapper {
+    width: 'fit-content';
+    height: 'fit-content';
+    position: absolute;
+    bottom: 5px;
+    right: -10px;
+    z-index: 11;
+}
+
+
+.photo_upload {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+
+.icon {
+    background-color: rgb(61, 163, 93);
+    color: white;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+input[type=file],
+input[type=file]::-webkit-file-upload-button {
+    cursor: pointer; 
+}

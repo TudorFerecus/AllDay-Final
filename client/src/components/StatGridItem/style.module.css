@@ -1,0 +1,13 @@
+.stat_grid_item {
+    font-family: 'Lexend';
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.stat_grid_item_hightlight {
+    font-family: 'Lexend';
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, 0.8);
+} 

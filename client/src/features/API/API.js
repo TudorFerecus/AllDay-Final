@@ -119,7 +119,7 @@ function GetLastConnection(onResponse, onError)
 function GetUser(user, onResponse, onError)
 {
     const url = 'api/v1/users/getUser'
-    axios.post(url, {IP: user})
+    axios.post(url, user)
     .then((res) => {
         if(res.status === 200)
         {
@@ -136,6 +136,56 @@ function GetUser(user, onResponse, onError)
 
 }
 
+function GetStat(user, onResponse, onError)
+{
+    const url = 'api/v1/stats/getStat'
+
+    axios.post(url, user)
+    .then((res) => {
+        if(res.status === 200)
+        {
+            onResponse(res.data.stat);
+        }
+        else
+        {
+            onError();
+        }
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+}
+
+function PostPhoto(data, onResponse, onError)
+{
+    const url = 'api/v1/cloudUpload/uploadImage'
+    axios({
+        method: 'post',
+        url: url,
+        data: data,
+        config: { headers: { 'Content-Type': 'multipart/form-data' }}
+    })
+    .then((res) => {
+        onResponse(res.data);
+    })
+    .catch((error) => {
+        onError(error);
+    })
+}
+
+function UpdateUser(data, onResponse, onError)
+{
+    const url = 'api/v1/users/updateUser'
+    axios.put(url, data)
+    .then((res) => {
+        onResponse(res.data);
+    })
+    .catch((error) => {
+        onError(error);
+    })
+}
+
 export {
     LoginAPI, 
     RegisterAPI, 
@@ -143,5 +193,8 @@ export {
     GetAllUsersAPI, 
     GetAllConnectionsAPI,
     GetLastConnection,
-    GetUser
+    GetUser,
+    GetStat,
+    PostPhoto,
+    UpdateUser
 }

@@ -25,7 +25,7 @@ function Login()
             },
             userState:{...res.data.user}}))
             {   
-                console.log(res.data.success)
+                localStorage.setItem("mail", res.data.user.mail)
                 alertSuccessful("Login Successful!")
                 navigate('/presence')
             }

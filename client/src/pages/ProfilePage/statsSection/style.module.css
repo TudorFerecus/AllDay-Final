@@ -1,0 +1,29 @@
+.info_section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.stats_section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.stats_title {
+    margin: 1.5dvw 0dvw;
+    margin-bottom: 3dvh;
+    font-weight: 600;
+    font-size: 1.65rem;
+    font:'Lexend';
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.stats_grid {
+    display: grid;
+    grid-template-columns: max(8dvw, 160px) max(12.5dvw, 250px);
+    grid-gap: max(1dvw, 15px);
+    align-items: start;
+    margin-bottom: max(3dvw, 30px);
+    margin-left: 3dvw;
+}

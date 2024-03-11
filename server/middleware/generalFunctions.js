@@ -26,9 +26,7 @@ const getUserSearchFilter = (body) => {
 }
 
 const validateUser = (user, token) => {
-    const realToken = jwt.sign(user.toObject(), process.env.JWT, {algorithm: 'HS256', noTimestamp: true});
-
-    if(realToken == token) return true;
+    if(token, process.env.JWT) return true;
     return false;
 
 }
@@ -61,7 +59,7 @@ const checkAuthorization = (req, res, next) => {
 }
 
 const getUserLocalIp = (callback) => {
-    exec(`netstat -an | FINDSTR ` + `"` + process.env.LOCAL_IP + `"`, 
+    exec(`netstat -an | FINDSTR ` + `"` + process.env.LOCAL_IP_PORT + ':' + process.env.LOCAL_PORT + `"`, 
       function (error, stdout, stderr) {
         if (error !== null) 
             callback("fail");

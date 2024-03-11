@@ -1,21 +1,23 @@
 import Head from "../../components/Head/Head"
 import Navbar from "../../components/Navbar/Navbar"
+import StatsSection from './statsSection/StatsSection'
+import ProfileSection from './profileSection/ProfileSection'
 
-import useSignOut from 'react-auth-kit/hooks/useSignOut';
-import { useNavigate } from 'react-router-dom';
+import styleCSS from './style.module.css'
 
 function ProfilePage()
 {
-    const signOut = useSignOut()
-    const navigate = useNavigate()
 
     return (
-        <>
-        <Head pageTitle="Login"/>
-        <Navbar />
-        <button onClick={() => {signOut(); navigate('/login')}}>Sign Out</button>
-        
-        </>
+        <div className={styleCSS.main}>
+            <Head pageTitle="Login"/>
+            <Navbar />
+            <div className={styleCSS.main_section}>
+                <StatsSection />
+                <ProfileSection />
+            </div>
+
+        </div>
     )
 }
 
