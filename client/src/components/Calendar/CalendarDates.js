@@ -1,13 +1,21 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import CalendarDate from './CalendarDate';
 import styleCSS from './style.module.css'
 
+import { AppContext } from '../../features/Context/Context';
 
 function getDay(year, month)
 {
     let day = new Date(year + "-" + month + "-01").getDay()
     day = (day===0) ? 7 : day
     return day;
+}
+
+function formatDate(date)
+{
+    if(date < 10) return "0" + date;
+    return date;
+
 }
 
 function getDayStatus(nowMonth, date, month, day)
@@ -36,7 +44,8 @@ function CalendarDates({ date, year, month})
 
     const nowMonth = useRef(date.getMonth());
 
-    
+    const {datesSelected} = useContext(AppContext)
+
     return (
         <div className={styleCSS.grid_calendar}>
             {emptyDays.map((day) => (
@@ -44,15 +53,20 @@ function CalendarDates({ date, year, month})
                 ))
             }
 
-            {days.map((day) => (
-                <CalendarDate 
-                    key={day}
-                    day={day} 
-                    isFuture={(getDayStatus(nowMonth.current, date, month, day))? false : true}
-                    month={month}
-                    year={year}
-                />
-            ))}
+            { 
+                days.map((day) => (
+                    <CalendarDate 
+                        key={`${day}-${month}-${year}`}
+                        day={day} 
+                        isFuture={(getDayStatus(nowMonth.current, date, month, day))? false : true}
+                        month={month}
+                        year={year}
+                        isActive={
+                            datesSelected.includes(`${year}-${formatDate(month + 1)}-${formatDate(day)}`) ? 
+                            true: false}
+                    />
+                ))
+            }
         </div>
     )
 }

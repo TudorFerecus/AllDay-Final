@@ -16,7 +16,6 @@
         1fr
     );
     grid-template-rows: auto 1fr 1fr;
-    gap: 10px; 
     border-bottom: rgba(255, 255, 255, 0.2) solid 1px;
 }
 
@@ -48,11 +47,10 @@
     justify-content: center;
     height: max(1.6dvh, 18px);
     width: max(1.4dvw, 16px);
-    padding: 3px;
+    padding: 1dvh .35dvw 1dvh .35dvw;
     border-radius: 40%;
-    margin-top: 16px;
-    margin-bottom: 20px;
     transition: all .15s ease-in-out;
+    margin: 2.7dvh 0px;
 }
 
 .inner_calendar_item:hover {
@@ -67,11 +65,10 @@
     justify-content: center;
     height: max(1.6dvh, 18px);
     width: max(1.4dvw, 16px);
-    padding: 3px;
+    padding: .4dvh 6px .4dvh 6px;
     border-radius: 50%;
-    margin-top: 16px;
-    margin-bottom: 20px;
     color: rgba(76, 76, 76, 0.3);
+    margin: 2.7dvh 0px;
 }
 
 .inner_calendar_item_disabled:hover {
@@ -95,4 +92,11 @@
 
 .color_bg_item:hover {
     cursor: pointer;
+}
+
+@media only screen and (max-width: 500px)
+{
+    .grid_item_days {
+        font-size: 12px;
+    }
 }

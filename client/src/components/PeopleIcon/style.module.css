@@ -5,6 +5,7 @@
     box-shadow: rgba(61, 163, 93, 0.56) 0px 10px 40px 0px;
     margin-top: 15px;
     margin-bottom: 15px;
+    object-fit:cover;
 }
 
 .offline_photo {
@@ -30,4 +31,18 @@
     text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+@media only screen and (max-width: 500px) {
+
+
+    .online_photo, .offline_photo {
+        width: 20dvw;
+        height: 20dvw;
+    }
+
+    .online_title, .offline_title {
+        font-size: .8rem;
+        width: 35dvw;
+    }
 }

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styleCSS from './style.module.css';
 import {AppContext} from '../../features/Context/Context';
 import { useContext } from 'react';
@@ -8,17 +8,20 @@ function formatDate(date) {
     return date;
 }
 
-const CalendarDate = ({ day, isFuture, month, year}) => {
+const CalendarDate = ({ day, isFuture, month, year, isActive = false}) => {
 
-    const [styleColor, setStyleColor] = React.useState('none');
-    const clicked = useRef(false, [])
-
-    
+    const [styleColor, setStyleColor] = React.useState('rgba(0, 0, 0, 0)');
+    const clicked = useRef(isActive)
     const {datesSelected, setDatesSelected} = useContext(AppContext);
+
+    useEffect(() => {
+        if(isActive)
+            setStyleColor('#3da35d')
+    },[])
 
     function onClick() {
         if (isFuture) 
-        {
+        {       
             clicked.current = !clicked.current;
             if(clicked.current)
             {
@@ -39,8 +42,8 @@ const CalendarDate = ({ day, isFuture, month, year}) => {
             <span onClick={onClick} style={{ backgroundColor: styleColor }} className={isFuture? 
                 styleCSS.inner_calendar_item :
                 styleCSS.inner_calendar_item_disabled}
-                onMouseEnter={() => {if(!clicked.current) setStyleColor('rgba(0, 0, 0, 0.2)')}}
-                onMouseLeave={() => {if(!clicked.current) setStyleColor('rgba(0, 0, 0, 0.0)')}}
+                onMouseEnter={() => {if(!clicked.current && isFuture) setStyleColor('rgba(0, 0, 0, 0.2)')}}
+                onMouseLeave={() => {if(!clicked.current && isFuture) setStyleColor('rgba(0, 0, 0, 0.0)')}}
                 >
                 {day}
             </span>

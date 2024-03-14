@@ -9,9 +9,15 @@ import os
 
 # realizeaza un request de tip get la baza de date hostata online 
 def getIPs():
-    users = requests.get(urlUsers).json()
-    for user in users["users"]:
-        ips.append(user["IP"])
+
+    try:
+        users = requests.get(urlUsers).json()
+        for user in users["users"]:
+            ips.append(user["IP"])
+    except requests.exceptions.ConnectionError:
+        print("Server is not active, stopping exectuion")
+        return 0
+    return 1
 
 # O aditie fata de algoritmii precedenti este verificarea conexiunii la internet
 # inainte de fiecare cautare, printr-un request de tip get , 
@@ -69,20 +75,39 @@ urlConnection = 'http://localhost:10000/api/v1/connections/postConnection'
 target_ip = f"{LOCAL_IP}/24" # adresa IP a retelei, cu tot cu masca sa de retea
 ips = [] # toate adresele IP ale userilor
 
+print(f"{LOCAL_IP}/24")
+
 nrOfTries = 100 # cu cat mai mare cu atat mai exact algoritmul, dar ii scade viteza
 sleep_sec = 720 # delay intre cautari
 sleep_wifi_error = 10 # dace server-ul nu are WI-FI stabil, asteapta un numar de secunde
 
 tries = 1
 found_ips = []
+canExecute = False
 
-getIPs()
+if getIPs():
+    canExecute = True
+
 print(ips)
 
-print(target_ip)
 
+minTime=datetime.strptime(os.getenv('MIN_TIME'),'%H:%M:%S')
+maxTime=datetime.strptime(os.getenv('MAX_TIME'),'%H:%M:%S')
+startDayOffset=(minTime - datetime.strptime('00:00:00','%H:%M:%S')).total_seconds()
 try:
-    while True:
+    while True and canExecute:
+        dateNow = datetime.now()
+        dnow = datetime.strptime(f"{dateNow.hour}:{dateNow.minute}:{dateNow.second}",'%H:%M:%S')
+
+        if dnow.time() < minTime.time():
+            sleep((minTime - dnow).total_seconds())
+            continue
+
+        if dnow.time() > maxTime.time():
+            sleepAmount = (datetime.strptime('23:59:59','%H:%M:%S') - maxTime).total_seconds() + startDayOffset
+            print(sleepAmount)
+            sleep(sleepAmount)
+            continue
 
         # reseteaza found_ips intre cautari si verifica numarul de adrese IP de cautat
         found_ips = []
@@ -101,12 +126,10 @@ try:
                 if cntIpsToSeek <= 0:
                     break
 
-            # daca a gasit macar o adresa IP, face un request POST la server    
-            if len(found_ips) > 0:
-                current_time = datetime.now()
-                formatted_time = current_time.strftime("%Y-%m-%d %H:%M")
-                x = requests.post(urlConnection, json={"users": found_ips, "dateTime": str(formatted_time)})
-                print(x.json())
+            current_time = datetime.now()
+            formatted_time = current_time.strftime("%Y-%m-%d %H:%M")
+            x = requests.post(urlConnection, json={"users": found_ips, "dateTime": str(formatted_time)})
+            print(x.json())
             
             sleep(sleep_sec)
 

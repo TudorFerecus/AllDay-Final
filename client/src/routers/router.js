@@ -11,11 +11,12 @@ import Signup from "../pages/Sign-up/Sign-up";
 import RequireAuth from '@auth-kit/react-router/RequireAuth';
 import Calendar from "../pages/Calendar/Calendar";
 import Analytics from "../pages/Analytics/Analytics";
+import Tasks from "../pages/Tasks/Tasks";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />
+    element: <RequireAuth fallbackPath={'/login'}> <Presence /> </RequireAuth>
   },
   {
     path: "/login",
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/analytics",
     element: <RequireAuth fallbackPath={'/login'}> <Analytics /> </RequireAuth>
+  },
+  {
+    path: "/tasks",
+    element: <RequireAuth fallbackPath={'/login'}> <Tasks /> </RequireAuth>
   }
 ]);
 

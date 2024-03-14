@@ -1,3 +1,7 @@
+ul {
+    padding: 0px ;
+}
+
 .user-wrapper {
     display: flex;
     justify-content: end;
@@ -29,6 +33,7 @@
     text-transform: uppercase;
     text-align: center;
     font-weight: 600;
+    padding-left: 1.5dvw;
 }
   
 .nav * {
@@ -104,16 +109,15 @@
 .icon .icon-list .icon-a {
     position: relative; 
     display: block;
-    width: 2.8dvw;
-    height: 2.8dvw;
+    width: 2.2dvw;
+    height: 2.2dvw;
     min-height: 30px;
     min-width: 30px;
     text-align: center;
-    line-height: 2.8dvw;
-    line-height: max(30px, 2.8dvw);
+    line-height: max(30px, 2.2dvw);
     background: rgba(0, 0, 0, 0.8);
     border-radius: 50%;
-    font-size: max(15px, 1.6dvw);
+    font-size: max(15px, 1.1dvw);
     color: #a0a0a0;
     transition: .5s;
     margin-right: 1rem;
@@ -142,4 +146,15 @@
     color: #3da35d;
     box-shadow: 0 0 10px #3da35d;
     text-shadow: 0 0 10px #3da35d;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .nav {
+        padding-left: 15px;
+    }
+
+    .log-in {
+        margin-right: 15px;
+    }
 }

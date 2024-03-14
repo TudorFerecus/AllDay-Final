@@ -59,12 +59,12 @@ const checkAuthorization = (req, res, next) => {
 }
 
 const getUserLocalIp = (callback) => {
-    exec(`netstat -an | FINDSTR ` + `"` + process.env.LOCAL_IP_PORT + ':' + process.env.LOCAL_PORT + `"`, 
-      function (error, stdout, stderr) {
-        if (error !== null) 
-            callback("fail");
-        callback("fin " + stdout);
-      });
+    exec(`netstat -an | FINDSTR ` + `"` + process.env.LOCAL_IP + ':' + process.env.LOCAL_PORT + `"`, 
+    function (error, stdout, stderr) {
+    if (error !== null) 
+        callback("fail");
+    callback("fin " + stdout);
+    });
 }
 
 function diffMinutes(date1, date2) {

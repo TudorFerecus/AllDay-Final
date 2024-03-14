@@ -17,8 +17,6 @@ const register = async (req, res) => {
     let profilePhoto = process.env.PROFILE_PHOTO_PLACEHOLDER;
     let bodyPassword = req.body.password;
 
-    console.log(bodyIP);
-
     if(bodyName && bodyMail && bodyIP && bodyPassword)
     {
         const hashedPassword = await bcrypt.hash(bodyPassword, 10);
@@ -33,9 +31,25 @@ const register = async (req, res) => {
                     status: "action failed, make sure you remain connected to the page untill the account is created"})
             else
             {
-                bodyIP = out.split(' ')[13].split(':')[0];
+                bodyIP = out.split('\n')[0].split(' ')
+
+                let i = 0;
+                let minIPcharLength = 8;
+                while( i < bodyIP.length )
+                {
+                    if(bodyIP[i].length < minIPcharLength)
+                    {
+                        bodyIP.splice(i, 1)
+                    }
+                    else 
+                    {
+                        i++;
+                    }
+                }
+
                 const user = await Users.findOne({mail: bodyMail});
-                user.IP = bodyIP;
+                user.IP = bodyIP[1].split(':')[0];
+                console.log(bodyIP[1].split(':')[0])
                 user.save()
             }
 
@@ -81,7 +95,6 @@ const login = async (req, res) => {
         if(user)
         {
             let isGoodPass = await bcrypt.compare(password, user.password)
-            console.log(isGoodPass)
             if(isGoodPass)
             {
                 const token = jwt.sign(user.toObject(), process.env.JWT, {expiresIn: '365d'});
@@ -160,7 +173,6 @@ const updateUser = async (req, res) => {
         {
             let linkParse = user.profilePhoto.split('/');
             let fileName = linkParse[linkParse.length - 1].split('.')[0];
-            console.log(fileName);
             if(user.profilePhoto != process.env.PROFILE_PHOTO_PLACEHOLDER)
                 cloudinary.uploader
                     .destroy(fileName)

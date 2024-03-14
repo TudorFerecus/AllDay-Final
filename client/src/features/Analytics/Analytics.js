@@ -69,12 +69,23 @@ function getDefaultHourDataFormat()
 function formatHourlyAttendance(data, datesSelected)
 {
     let response = []
+
+    if(data.length === 0) return response
+
     for(let i = 0; i < data[0].length; i++)
     {
         let dataItem = []
         for(let j = 0; j < data.length; j++)
         {
-            dataItem.push({x: datesSelected[j], y: data[j][i].ips.length, users: data[j][i].users})
+            let datesParsed = datesSelected[j].split('-')
+            let month = datesParsed[1]
+            let day = datesParsed[2]
+
+            dataItem.push(
+                {
+                    x: `${day}-${month}`, 
+                    y: data[j][i].ips.length, 
+                    users: data[j][i].users})
         }
         response.push({id: data[0][i].id, data: dataItem})
     }

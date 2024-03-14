@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 import styleCSS from './style.module.css'
-import { useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
-
+import { AppContext } from "../../features/Context/Context"
 
 function Calendar()
 {
@@ -44,8 +44,12 @@ function Calendar()
 
     const navigate = useNavigate();
     const [calendarDates, setCalendarDates] = useState(<CalendarDates date={date} year={year.current} month={month.current}/>)
-    
-    //setDatesSelected([])
+    const {datesSelected, setDatesSelected} = useContext(AppContext)
+
+
+    useEffect(() => {
+        setDatesSelected([])
+    }, [])
 
     return (
         <>

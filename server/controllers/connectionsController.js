@@ -39,32 +39,47 @@ const postConnection = async (req, res) => {
 
     if(usersBody && dateTimeBody)
     {
-
-        for(let userIP of usersBody)
+        if(usersBody.length == 0)
         {
-            const user = await Users.findOne({"IP": userIP})
-            
-            if(user)
+            const lastConnection = allConnections[allConnections.length - 1]
+            if(lastConnection.users.length == 0)
             {
-                const stat = await Stats.findOne({"user": user._id});
+                return res.status(StatusCodes.OK).json({
+                    success: true,
+                    posted: false,
+                    connection: lastConnection
                 
-                if(stat)
-                {   
-                    if(allConnections.length != 0)
-                    {
-                        const lastConnection = allConnections[allConnections.length - 1];
-                        if(lastConnection.users.includes(userIP))
-                        {
-                            let totalDiff = diffMinutes(stat.lastOnline, dateTimeBody);
-                            
-                            if(totalDiff > 0 && totalDiff < 60)
-                                stat.totalTime = parseInt(stat.totalTime) + parseInt(totalDiff);
-
-                        }
-                    }       
+                })
+            }
+        }
+        else 
+        {
+            for(let userIP of usersBody)
+            {
+                const user = await Users.findOne({"IP": userIP})
+                
+                if(user)
+                {
+                    const stat = await Stats.findOne({"user": user._id});
                     
-                    stat.lastOnline = dateTimeBody;
-                    await stat.save();
+                    if(stat)
+                    {   
+                        if(allConnections.length != 0)
+                        {
+                            const lastConnection = allConnections[allConnections.length - 1];
+                            if(lastConnection.users.includes(userIP))
+                            {
+                                let totalDiff = diffMinutes(stat.lastOnline, dateTimeBody);
+                                
+                                if(totalDiff > 0 && totalDiff < 60)
+                                    stat.totalTime = parseInt(stat.totalTime) + parseInt(totalDiff);
+
+                            }
+                        }       
+                        
+                        stat.lastOnline = dateTimeBody;
+                        await stat.save();
+                    }
                 }
             }
         }
