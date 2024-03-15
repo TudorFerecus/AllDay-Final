@@ -98,7 +98,7 @@ function GetAllConnectionsAPI(onResponse, onError)
 
 function GetLastConnection(onResponse, onError)
 {
-    const url = 'api/v1/connections/getLastConnection'
+    const url = '/api/v1/connections/getLastConnection'
     axios.get(url)
     .then((res) => {
         if(res.status === 200)

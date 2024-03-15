@@ -58,5 +58,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:10000"
+  "proxy": "https://allday-final.onrender.com"
 }

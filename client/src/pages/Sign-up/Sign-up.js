@@ -5,25 +5,25 @@ import Input from "../../components/Input/Input"
 import Button1 from "../../components/Buttons/Button1"
 
 import { alertSuccessful, alertError } from "../../features/Alerts/alerts"
-import { useState } from "react"
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from "react"
 import { RegisterAPI, NewStatAPI } from '../../features/API/API'
 import styleCSS from './style.module.css'
+import { AppContext } from "../../features/Context/Context"
 
 function Signup()
 {
 
     const [formData, setFormData] = 
         useState({name:'', mail:'', password:'', confirmPassword:''})
-    const navigate = useNavigate()
-
+    const {REMOTE_LINK} = useContext(AppContext)
+    
     function onResponse(res)
     {
         const data = {mail:formData.mail, token: res.data.token}
         if(res.data.success === true)
             NewStatAPI(data, () => { 
             alertSuccessful("Sign-up Successful! Now you just have to log in")
-            navigate('/login') 
+            window.location.replace(`${REMOTE_LINK}/login`)
             }, onError);
         else
             alertError("Something went wrong, try again");

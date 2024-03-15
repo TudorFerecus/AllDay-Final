@@ -4,7 +4,9 @@ import { AppContext } from "./Context"
 function ContextProvider(props)
 {
     const [datesSelected, setDatesSelected] = useState([])
-    const values = {datesSelected, setDatesSelected}
+    const LOCAL_LINK = 'http://192.168.56.1:3000'
+    const REMOTE_LINK = 'http://localhost:3000'
+    const values = {datesSelected, setDatesSelected, LOCAL_LINK, REMOTE_LINK}
 
     return (
         <AppContext.Provider value={values}>
