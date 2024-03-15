@@ -32,7 +32,7 @@ function ProfileSection()
 
         setUsername(res.name)
         setEmail(res.mail)
-        setTeam('UPB Air')
+        setTeam(res.team)
         setProfilePhoto(res.profilePhoto);
     }, () => { alertError("Something went wrong!") })
 
@@ -43,7 +43,6 @@ function ProfileSection()
         {
             let mail = localStorage.getItem('mail')
             let token = Cookies.get('_auth');
-            console.log(data.data)
             UpdateUser({mail:mail, token:token, profilePhoto:data.data.url},
                 (res) => {
                     token = Cookies.set('_auth', res.token)

@@ -16,6 +16,7 @@ const register = async (req, res) => {
     let bodyIP = "TODO"
     let profilePhoto = process.env.PROFILE_PHOTO_PLACEHOLDER;
     let bodyPassword = req.body.password;
+    let team = process.env.TEAM
 
     if(bodyName && bodyMail && bodyIP && bodyPassword)
     {
@@ -59,7 +60,8 @@ const register = async (req, res) => {
             mail: bodyMail,
             IP: bodyIP,
             password: hashedPassword,
-            profilePhoto: profilePhoto
+            profilePhoto: profilePhoto,
+            team: team
         })
 
         if(user)

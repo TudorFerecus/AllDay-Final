@@ -109,15 +109,15 @@ ul {
 .icon .icon-list .icon-a {
     position: relative; 
     display: block;
-    width: 2.2dvw;
-    height: 2.2dvw;
-    min-height: 30px;
-    min-width: 30px;
+    width: 2.6dvw;
+    height: 2.6dvw;
+    min-height: 20px;
+    min-width: 20px;
     text-align: center;
-    line-height: max(30px, 2.2dvw);
+    line-height: max(20px, 2.6dvw);
     background: rgba(0, 0, 0, 0.8);
     border-radius: 50%;
-    font-size: max(15px, 1.1dvw);
+    font-size: max(15px, 1.3dvw);
     color: #a0a0a0;
     transition: .5s;
     margin-right: 1rem;
@@ -156,5 +156,14 @@ ul {
 
     .log-in {
         margin-right: 15px;
+    }
+
+    .icon .icon-list .icon-a {
+        width: 22px;
+        height: 22px;
+        min-width: 0px;
+        min-height: 0px;
+        font-size: 12px;
+        line-height: 22px;
     }
 }

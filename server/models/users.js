@@ -13,6 +13,10 @@ const UsersSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please specify ipAddress"]
   },
+  team: {
+    type: String,
+    default: "None"
+  },
   password: {
     type: String,
     required: [true, "Please specify password"]
