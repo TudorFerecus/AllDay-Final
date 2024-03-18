@@ -23,7 +23,7 @@ const mongo_uri = process.env.MONGO_URI;
 app.use(express.json());
 app.use(allowControlOrigin);
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://main--all-day.netlify.app'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     optionsSuccessStatus: 204,
     credentials: true,
