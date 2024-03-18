@@ -2,7 +2,7 @@ import axios from "axios"
 
 function LoginAPI(data, onResponse, onError)
 {
-    const url = 'api/v1/users/login'
+    const url = 'https://allday-final.onrender.com/api/v1/users/login'
     axios.post(url, data)
     .then((res) => {
         if(res.status === 200)
@@ -21,7 +21,7 @@ function LoginAPI(data, onResponse, onError)
 
 function RegisterAPI(data, onResponse, onError)
 {
-    const url = 'api/v1/users/register'
+    const url = 'https://allday-final.onrender.com/api/v1/users/register'
     axios.post(url, data)
     .then((res) => {
         if(res.status === 200)
@@ -40,7 +40,7 @@ function RegisterAPI(data, onResponse, onError)
 
 function NewStatAPI(data, onResponse, onError)
 {
-    const url = 'api/v1/stats/createStat'
+    const url = 'https://allday-final.onrender.com/api/v1/stats/createStat'
     axios.post(url, data)
     .then((res) => {
         if(res.status === 200)
@@ -59,7 +59,7 @@ function NewStatAPI(data, onResponse, onError)
 
 function GetAllUsersAPI(onResponse, onError)
 {
-    const url = 'api/v1/users/getAllUsers'
+    const url = 'https://allday-final.onrender.com/api/v1/users/getAllUsers'
     axios.get(url)
     .then((res) => {
         if(res.status === 200)
@@ -79,7 +79,7 @@ function GetAllUsersAPI(onResponse, onError)
 
 function GetAllConnectionsAPI(onResponse, onError)
 {
-    const url = 'api/v1/connections/getAllConnections'
+    const url = 'https://allday-final.onrender.com/api/v1/connections/getAllConnections'
     axios.get(url)
     .then((res) => {
         if(res.status === 200)
@@ -98,7 +98,7 @@ function GetAllConnectionsAPI(onResponse, onError)
 
 function GetLastConnection(onResponse, onError)
 {
-    const url = '/api/v1/connections/getLastConnection'
+    const url = 'https://allday-final.onrender.com/api/v1/connections/getLastConnection'
     axios.get(url)
     .then((res) => {
         if(res.status === 200)
@@ -118,7 +118,7 @@ function GetLastConnection(onResponse, onError)
 
 function GetUser(user, onResponse, onError)
 {
-    const url = 'api/v1/users/getUser'
+    const url = 'https://allday-final.onrender.com/api/v1/users/getUser'
     axios.post(url, user)
     .then((res) => {
         if(res.status === 200)
@@ -138,7 +138,7 @@ function GetUser(user, onResponse, onError)
 
 function GetStat(user, onResponse, onError)
 {
-    const url = 'api/v1/stats/getStat'
+    const url = 'https://allday-final.onrender.com/api/v1/stats/getStat'
 
     axios.post(url, user)
     .then((res) => {
@@ -159,7 +159,7 @@ function GetStat(user, onResponse, onError)
 
 function PostPhoto(data, onResponse, onError)
 {
-    const url = 'api/v1/cloudUpload/uploadImage'
+    const url = 'https://allday-final.onrender.com/api/v1/cloudUpload/uploadImage'
     axios({
         method: 'post',
         url: url,
@@ -176,7 +176,7 @@ function PostPhoto(data, onResponse, onError)
 
 function UpdateUser(data, onResponse, onError)
 {
-    const url = 'api/v1/users/updateUser'
+    const url = 'https://allday-final.onrender.com/api/v1/users/updateUser'
     axios.put(url, data)
     .then((res) => {
         onResponse(res.data);
