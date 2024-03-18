@@ -97,6 +97,13 @@
 @media only screen and (max-width: 500px)
 {
     .grid_item_days {
-        font-size: 12px;
+        font-size: 8px;
+        padding-left: 0px;
     }
+
+    .grid_item_calendar {
+        padding-left: 0px
+    }
+
+    
 }

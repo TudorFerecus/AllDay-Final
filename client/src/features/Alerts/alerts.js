@@ -4,7 +4,7 @@ function alertSuccessful(message)
 {
     toast.success(message, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 1500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

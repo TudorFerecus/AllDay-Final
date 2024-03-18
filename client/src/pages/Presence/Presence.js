@@ -7,7 +7,7 @@ import UserOnline from "../../components/PeopleIcon/UserOnline"
 import UserOffline from "../../components/PeopleIcon/UserOffline"
 
 import { useEffect, useState } from "react"
-import { GetLastConnection, GetUser, GetAllUsersAPI } from "../../features/API/API"
+import { GetLastConnection, GetAllUsersAPI } from "../../features/API/API"
 
 function Presence()
 {
@@ -56,19 +56,30 @@ function Presence()
         <div>
             <Head pageTitle="Presence"/>
             <Navbar /> 
-            <div className={presenceCSS.online_wrapper}>
-                { 
-                    onlineUsers.map(user => (
-                        <UserOnline className={presenceCSS.user}key={user.name} userName={user.name} url={user.url}/>
-                    ))
-                }
+            <div className={presenceCSS.online_section}>
+                <div className={presenceCSS.title}> Online users</div>
+                <div className={presenceCSS.online_wrapper}>
+                    {
+                        onlineUsers.length?
+                        onlineUsers.map(user => (
+                            <UserOnline className={presenceCSS.user}key={user.name} userName={user.name} url={user.url}/>
+                        )) :
+                        <div className={presenceCSS.subtitle}> No online users for now. </div>
+                    }
+                </div>
             </div>
-            <div className={presenceCSS.offline_wrapper}>
-                {
-                    offlineUsers.map(user => (
-                        <UserOffline className={presenceCSS.user}key={user.name} userName={user.name} url={user.url}/>
-                    ))
-                }
+            <div className={presenceCSS.offline_section}>
+                <div className={presenceCSS.title}> Offline users </div>
+                <div className={presenceCSS.offline_wrapper}>
+                    
+                    {
+                        offlineUsers.length?
+                        offlineUsers.map(user => (
+                            <UserOffline className={presenceCSS.user}key={user.name} userName={user.name} url={user.url}/>
+                        )) :
+                        <h2 className={presenceCSS.subtitle}> No offline users for now. </h2>
+                    }
+                </div>
             </div>
         </div>
     )

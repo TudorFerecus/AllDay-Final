@@ -63,3 +63,15 @@
     font-size: 2rem;
     color: rgba(255, 255, 255, 0.5);
 }
+
+@media only screen and (max-width: 600px) {
+    .top_main_text {
+        font-size: 1rem;
+    }
+
+    .top_main_wrapper {
+        margin-top: 10px;
+        margin-bottom: 10px
+    }
+
+}
