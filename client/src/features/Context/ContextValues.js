@@ -5,7 +5,7 @@ function ContextProvider(props)
 {
     const [datesSelected, setDatesSelected] = useState([])
     const LOCAL_LINK = 'http://192.168.56.1:3000'
-    const REMOTE_LINK = 'https://all-day.netlify.app'
+    const REMOTE_LINK = 'https://main--all-day.netlify.app'
     const values = {datesSelected, setDatesSelected, LOCAL_LINK, REMOTE_LINK}
 
     return (
