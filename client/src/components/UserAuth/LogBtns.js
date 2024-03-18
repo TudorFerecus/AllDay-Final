@@ -6,31 +6,29 @@ import { AppContext } from '../../features/Context/Context'
 
 function SignupBtn({relLinkToPage = ''})
 {
-    let canMove = false
     const {LOCAL_LINK} = useContext(AppContext)
-    fetch(LOCAL_LINK)
-    .then((response)=> {
-        if(response.status === 200)
-            canMove = true
-    })
-    .catch((error) => {
-        console.log('network error: ' + error);
-    })
-
-    function onClickSignIn()
+    function canChange()
     {
-        if(canMove)
-        {
-            window.location.replace(relLinkToPage)
-        }
-        else
-        {
-            alertError("You are not connected to the right WI-FI, plase contact an admin")
-        }
+        fetch(LOCAL_LINK)
+        .then((response)=> {
+            if(response.status === 200)
+            {
+                window.location.replace(relLinkToPage)
+            }
+
+            else  
+            {
+                alertError("You are not connected to the right WI-FI, plase contact an admin")
+            }
+
+        })
+        .catch((error) => {
+            console.log('network error: ' + error);
+        })
     }
 
     return (
-    <div className="log sign-up" onClick={onClickSignIn}>Sign-up/</div>
+    <div className="log sign-up" onClick={canChange}>Sign-up/</div>
     )
 }
 
@@ -45,7 +43,7 @@ function LoginOptions({relLinkToSignup = '', relLinkToLogin = ''})
 {
     return (
         <div className="login-options">
-            <SignupBtn relLinkToPage= {relLinkToSignup} />
+            <SignupBtn relLinkToPage= {relLinkToSignup}/>
             <LoginBtn relLinkToPage= {relLinkToLogin} />
         </div>
     )
