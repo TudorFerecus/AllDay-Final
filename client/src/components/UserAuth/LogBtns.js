@@ -9,23 +9,24 @@ function SignupBtn({relLinkToPage = ''})
     const {LOCAL_LINK} = useContext(AppContext)
     function canChange()
     {
-        fetch(LOCAL_LINK)
-        .then((response)=> {
-            if(response.status === 200)
-            {
-                window.open(`${relLinkToPage}`, '_blank', 'noopener')
-            }
+        window.open(`${relLinkToPage}`, '_blank', 'noopener')
+        // fetch(LOCAL_LINK)
+        // .then((response)=> {
+        //     if(response.status === 200)
+        //     {
+        //         window.open(`${relLinkToPage}`, '_blank', 'noopener')
+        //     }
 
-            else  
-            {
-                alertError("You are not connected to the right WI-FI, plase contact an admin")
-            }
+        //     else  
+        //     {
+        //         alertError("You are not connected to the right WI-FI, plase contact an admin")
+        //     }
 
-        })
-        .catch((error) => {
-            console.log('network error: ' + error);
-            alertError("You are not connected to the right WI-FI, plase contact an admin")
-        })
+        // })
+        // .catch((error) => {
+        //     console.log('network error: ' + error);
+        //     alertError("You are not connected to the right WI-FI, plase contact an admin")
+        // })
     }
 
     return (
