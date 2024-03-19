@@ -13,7 +13,7 @@ function SignupBtn({relLinkToPage = ''})
         .then((response)=> {
             if(response.status === 200)
             {
-                window.location.replace(relLinkToPage)
+                window.open(`${relLinkToPage}`, '_blank', 'noopener')
             }
 
             else  
@@ -24,6 +24,7 @@ function SignupBtn({relLinkToPage = ''})
         })
         .catch((error) => {
             console.log('network error: ' + error);
+            alertError("You are not connected to the right WI-FI, plase contact an admin")
         })
     }
 
