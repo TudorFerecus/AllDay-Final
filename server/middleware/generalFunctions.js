@@ -61,7 +61,7 @@ const checkAuthorization = (req, res, next) => {
 }
 
 const getUserLocalIp = (callback) => {
-    exec(`netstat -an | FINDSTR "192.168.0.88:3000"`, 
+    exec(`netstat -an | FINDSTR "192.168.0.109:3000"`, 
       function (error, stdout, stderr) {
         if (error !== null) 
             callback("fail");
