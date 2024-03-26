@@ -77,10 +77,10 @@ function GetAllUsersAPI(onResponse, onError)
 
 }
 
-function GetAllConnectionsAPI(onResponse, onError)
+function GetAllConnectionsAPI(team, onResponse, onError)
 {
-    const url = 'https://allday-final.onrender.com/api/v1/connections/getAllConnections'
-    axios.get(url)
+    const url = 'https://allday-final.onrender.com/api/v1/connections/getConnectionByTeam'
+    axios.post(url, {team: team})
     .then((res) => {
         if(res.status === 200)
         {

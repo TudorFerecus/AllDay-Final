@@ -26,6 +26,7 @@ function Login()
             userState:{...res.data.user}}))
             {   
                 localStorage.setItem("mail", res.data.user.mail)
+                localStorage.setItem("team", res.data.user.team)
                 alertSuccessful("Login Successful!")
                 navigate('/presence')
             }
@@ -34,7 +35,7 @@ function Login()
     }
 
     const onError = (res) => {
-        console.log(res)
+        alertError("Something went wrong, please try again")
     }
 
     const onSubmit = (e) => {

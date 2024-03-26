@@ -69,6 +69,7 @@ def display_result(results):
 dotenv_path = Path('../.env')
 load_dotenv(dotenv_path=dotenv_path)
 LOCAL_IP = os.getenv('LOCAL_IP')
+TEAM = os.getenv('TEAM')
 
 urlUsers = 'http://localhost:10000/api/v1/users/getAllUsers'
 urlConnection = 'http://localhost:10000/api/v1/connections/postConnection'
@@ -128,7 +129,7 @@ try:
 
             current_time = datetime.now()
             formatted_time = current_time.strftime("%Y-%m-%d %H:%M")
-            x = requests.post(urlConnection, json={"users": found_ips, "dateTime": str(formatted_time)})
+            x = requests.post(urlConnection, json={"users": found_ips, "team": TEAM, "dateTime": str(formatted_time)})
             print(x.json())
             
             sleep(sleep_sec)

@@ -17,6 +17,22 @@ const getAllConnections = async (req, res) => {
 
 }
 
+const getConnectionByTeam = async (req, res) => {
+    const team = req.body.team
+    const allConnections = await Connection.find({team: team});
+    if(allConnections)
+    {
+        return res.status(StatusCodes.OK).json({
+            success: true, 
+            connection : allConnections
+        });
+    }
+    else
+        return res.status(StatusCodes.NOT_FOUND).json({
+            success: false
+        });
+}
+
 const getLastConnection = async (req, res) => {
     const allConnections = await Connection.find({});
     if(allConnections)
@@ -110,4 +126,4 @@ const postConnection = async (req, res) => {
 }
 
 
-module.exports = {postConnection, getLastConnection, getAllConnections};
+module.exports = {postConnection, getLastConnection, getAllConnections, getConnectionByTeam};

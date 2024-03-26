@@ -10,7 +10,7 @@ import AttendanceOverTime from "../../components/Analytics/AttendanceOverTime";
 import { AppContext } from "../../features/Context/Context"
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { alertSuccessful } from "../../features/Alerts/alerts"; 
+import { alertError, alertSuccessful } from "../../features/Alerts/alerts"; 
 import { GetAllConnectionsAPI, GetAllUsersAPI } from "../../features/API/API";
 import { getDatesInfo } from "../../features/Analytics/Analytics";
 
@@ -37,7 +37,8 @@ function Analytics() {
         users = []
         for(let user of res) users.push(user)
 
-        GetAllConnectionsAPI(onResponseConnections, onError)
+        const team = localStorage.getItem('team')
+        GetAllConnectionsAPI(team, onResponseConnections, onError)
     }
     const onResponseConnections = (res) => {
         let response = getDatesInfo(res, users, datesSelected)
@@ -61,7 +62,7 @@ function Analytics() {
     }
 
     const onError = () => {
-        console.log("Error")
+        alertError("Error getting data")
     }
 
     useEffect(() => {
