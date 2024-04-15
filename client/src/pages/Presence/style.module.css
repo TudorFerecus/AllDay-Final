@@ -31,7 +31,7 @@
 
 @media only screen and (max-width: 500px) {
     .online_wrapper, .offline_wrapper {
-        justify-content: center;
+        justify-content: left;
     }
     .title {
         margin-top: 10px;

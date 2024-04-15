@@ -8,6 +8,7 @@ const upload = multer();
 const connectionsRouter = require("./routes/connections.js");
 const usersRouter = require('./routes/users.js');
 const statsRouter = require('./routes/stats.js')
+const featuresRouter = require('./routes/features.js');
 const uploadRouter = require('./routes/uploadRouter');
 
 const {allowControlOrigin} = require('./middleware/generalFunctions.js')
@@ -31,6 +32,7 @@ app.use(cors({
 app.use('/api/v1/connections', connectionsRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/stats', statsRouter);
+app.use('/api/v1/features', featuresRouter);
 app.use('/api/v1/cloudUpload', cors(corsOptions), upload.single('file'), uploadRouter)
 
 const start = async () => {

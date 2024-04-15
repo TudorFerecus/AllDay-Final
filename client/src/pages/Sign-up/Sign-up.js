@@ -10,6 +10,15 @@ import { RegisterAPI, NewStatAPI } from '../../features/API/API'
 import styleCSS from './style.module.css'
 import { AppContext } from "../../features/Context/Context"
 
+function checkEmail(str)
+{
+    return String(str)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+}
+
 function Signup()
 {
 
@@ -26,7 +35,13 @@ function Signup()
             window.location.replace(`${REMOTE_LINK}/login`)
             }, onError);
         else
-            alertError("Something went wrong, try again");
+        {
+            if(res.data.message)
+                alertError(res.data.message)
+            else
+                alertError("Something went wrong, try again");
+        }
+            
     }
 
     function onError(res)
@@ -45,8 +60,21 @@ function Signup()
 
         if(formData.name && formData.mail && formData.password && formData.confirmPassword)
         {
+            if(!checkEmail(formData.mail))
+            {
+                alertError("Email is not valid")
+                return
+            }
+
             if(formData.password === formData.confirmPassword)
             {
+
+                if(formData.password.length < 8)
+                {
+                    alertError("Password is too weak, try at least 8 characters")
+                    return
+                }
+
                 delete formData.confirmPassword
                 RegisterAPI(formData, onResponse, onError);
             }
@@ -54,7 +82,7 @@ function Signup()
                 alertError("Passwords Do Not Match")
         }
         else
-        alertError("Please Complete All Fields")
+            alertError("Please Complete All Fields")
     }
 
     return (

@@ -20,6 +20,15 @@ const register = async (req, res) => {
 
     if(bodyName && bodyMail && bodyIP && bodyPassword)
     {
+        const userName = await Users.findOne({name: bodyName})
+        const userMail = await Users.findOne({mail: bodyMail})
+
+        if(userName || userMail)
+            return res.status(StatusCodes.OK).json({
+                success: false,
+                message: "Name or email already registered"
+            })
+
         const hashedPassword = await bcrypt.hash(bodyPassword, 10);
         getUserLocalIp(async (out) => {
             if(out === "fail")

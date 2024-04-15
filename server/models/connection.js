@@ -7,7 +7,6 @@ const ConnectionSchema = new mongoose.Schema({
   },
   team: {
     type: String,
-    required: [true, "Please specify team"]
   },
   dateTime: {
     type: String,

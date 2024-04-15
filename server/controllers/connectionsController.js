@@ -49,6 +49,7 @@ const postConnection = async (req, res) => {
 
     const usersBody = req.body.users;
     const dateTimeBody = req.body.dateTime;
+    const teamBody = req.body.team;
 
     const allConnections = await Connection.find({});
     
@@ -102,7 +103,8 @@ const postConnection = async (req, res) => {
 
         const connection = await Connection.create({
             users: usersBody,
-            dateTime: dateTimeBody
+            dateTime: dateTimeBody,
+            team: teamBody
         });
         if(connection)
         {

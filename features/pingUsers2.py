@@ -78,7 +78,7 @@ ips = [] # toate adresele IP ale userilor
 
 print(f"{LOCAL_IP}/24")
 
-nrOfTries = 100 # cu cat mai mare cu atat mai exact algoritmul, dar ii scade viteza
+nrOfTries = 10 # cu cat mai mare cu atat mai exact algoritmul, dar ii scade viteza
 sleep_sec = 720 # delay intre cautari
 sleep_wifi_error = 10 # dace server-ul nu are WI-FI stabil, asteapta un numar de secunde
 

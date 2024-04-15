@@ -74,9 +74,10 @@ function Login()
                             <Input inputName="Password" inputType="password"
                                 inputPlaceholder="Enter your password here" onChange={(e)=> setFormData({...formData, password:e.target.value})}/>
                         </div>
-                        <div style={{marginBottom: "2dvh"}}>
+                        <div>
                             <Button1 buttonText="Log-in" />
                         </div>
+                        <div className={styleCSS.forgot_password}> forgot password? </div>
                     </form>
                 </div>
             </div>

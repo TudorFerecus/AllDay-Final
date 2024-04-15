@@ -50,8 +50,26 @@ body, html {
     margin-bottom: 3.5dvh;
 }
 
+.forgot_password {
+    font-size: small;
+    font-weight: 300;
+    margin-bottom: 10px;
+    margin-top: 15px;
+} 
+
+.forgot_password:hover {
+    cursor: pointer;
+}
+
+
 @media screen and (max-width: 400px) {
     .wrapper {
         min-width: 90%;
     }
+
+    .forgot_password {
+        font-size: .5rem;
+        margin-top: 5px;
+    }
+
   }
